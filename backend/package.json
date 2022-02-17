@@ -69,6 +69,7 @@
     "compression": "^1.6.2",
     "cors": "^2.8.3",
     "cross-env": "^7.0.3",
+    "date-fns": "^1.30.1",
     "dotenv-safe": "^8.2.0",
     "email-templates": "^6.0.3",
     "express": "^4.15.2",
@@ -79,6 +80,7 @@
     "jwt-simple": "0.5.6",
     "lodash": "^4.17.4",
     "method-override": "^3.0.0",
+    "module-alias": "^2.2.2",
     "moment-timezone": "^0.5.13",
     "mongoose": "^5.2.17",
     "morgan": "^1.8.1",
@@ -107,5 +109,18 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.0.0",
     "supertest": "^6.1.3"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@src": "src",
+    "@api": "src/api",
+    "@config": "src/config",
+    "@models": "src/api/models",
+    "@utils": "src/api/utils",
+    "@routes": "src/api/routes",
+    "@controllers": "src/api/controllers",
+    "@services": "src/api/services",
+    "@middlewares": "src/api/middlewares",
+    "@validations": "src/api/validations"
   }
 }

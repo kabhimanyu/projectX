@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
-const User = require('../models/user.model');
+const User = require('@models/auth/user.model');
+const APIError = require('@utils/APIError');
 
 /**
  * Load user and append to req.
@@ -12,7 +13,7 @@ exports.load = async (req, res, next, id) => {
     req.locals = { user };
     return next();
   } catch (error) {
-    return next(error);
+    return next(new APIError(error));
   }
 };
 
@@ -87,7 +88,7 @@ exports.list = async (req, res, next) => {
     const transformedUsers = users.map((user) => user.transform());
     res.json(transformedUsers);
   } catch (error) {
-    next(error);
+    return next(new APIError(error));
   }
 };
 
