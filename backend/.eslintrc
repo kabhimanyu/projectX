@@ -15,5 +15,13 @@
   },
   "extends": [
     "airbnb-base"
+  ],
+  "quotes": [
+    "error",
+    "single"
+  ],
+  "semi": [
+      "error",
+      "never"
   ]
 }
