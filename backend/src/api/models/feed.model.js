@@ -9,10 +9,6 @@ const feedSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref:'Customer'
     },
-    friendGroup :{
-        type: Schema.Types.ObjectId,
-        ref:'friendgroup'
-    },
     description:{
         type:String
     },
@@ -60,10 +56,6 @@ const feedSchema = new mongoose.Schema({
     commentCount:{
       type:Number,
       default:0
-    },
-    color:{
-      type:String,
-      default:"#808080"
     }
 }, {
    timestamps: true,
@@ -73,7 +65,7 @@ feedSchema.method({
    transform() {
       const transformed = {};
       const fields = ['id', 'customer',
-      'friendGroup','likeCount','commentCount','base64media',
+      'likeCount','commentCount',
       'description',
       'media','color',
       'isDeleted'];
@@ -119,8 +111,8 @@ feedSchema.statics = {
       * @param {number} limit - Limit number of feed types to be returned.
       * @returns {Promise<Subject[]>}
       */
-   async list({ page = 1, perPage = 30, friendGroup,customer,isDeleted }) {
-      const options = omitBy({ friendGroup,customer,isDeleted }, isNil);
+   async list({ page = 1, perPage = 30,customer,isDeleted }) {
+      const options = omitBy({ customer,isDeleted }, isNil);
       
       var count = await this.find(options).exec();
       let feeds = await this.find(options).populate('customer','name mobile picture')
